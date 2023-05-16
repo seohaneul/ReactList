@@ -1,4 +1,7 @@
 import React from 'react'
+import Button from '../../components/Button'
+import * as S from './styled'
+import { v4 as uuidv4 } from 'uuid';
 
 function index() {
     let data = {
@@ -97,14 +100,48 @@ function index() {
         ]
     }
     
-    let dataList = data.map(function(element){
-        return `${element.name} ${element.level}`
+    let dataList = data.data.map(item => {
+        return <S.list key={uuidv4()}><p>{item.name}</p><p>{item.level}</p></S.list>
     })
-    console.log(dataList)
+    const idUp = () =>{
+        data = data.data.sort((a,b) => (a.id - b.id));
+        console.log(data)
+    }
+    const idDown = () => {
+
+    }
+    const levelUp = () =>{
+        data = data.data.sort((a,b) => (a.level - b.level));
+        console.log(data)
+    }
+    const nameUp = () => {
+
+    }
+    const nameDown = () => {
+
+    }
 
     return (
+        <>
+        <S.title>
+            {data.title}
+        </S.title>
+        <S.ul>
+            <li>name</li>
+            <li>level</li>
+        </S.ul>
+        <hr />
         <div>
+            {dataList}
         </div>
+
+
+        <Button onClick={idUp}>id 오름차순</Button>
+        <Button onClick={idDown}>id 내림차순</Button>
+        <Button onClick={levelUp}>level 오름차순</Button>
+        <Button onClick={nameUp}>이름 오름차순</Button>
+        <Button onClick={nameDown}>이름 내림차순</Button>
+        </>
     )
 }
 
