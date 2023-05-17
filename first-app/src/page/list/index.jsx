@@ -1,25 +1,40 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import Button from '../../components/Button'
 import * as S from './styled'
 import { memberList } from '../../contants/member_list'
 
-function Index() {
+function List() {
     const [list, setList] = useState(memberList);
 
     
     const idUp = () =>{
+        setList(prevState => {
+            return[...prevState].sort((a,b) => a.id - b.id);
+        });
     }
     const idDown = () => {
-        
+        setList(prevState => {
+            return[...prevState].sort((a,b) => b.id - a.id);
+        });
     }
     const levelUp = () =>{
-        
+        setList(prevState => {
+            return[...prevState].sort((a,b) => {
+            if( a.level === undefined){
+                return -1;
+            }
+            return a.level < b.level ? -1 : 1;
+        })});
     }
     const nameUp = () => {
-
+        setList(prevState => {
+            return[...prevState].sort((a,b) => a.name > b.name ? 1 : -1);
+        });
     }
     const nameDown = () => {
-
+        setList(prevState => {
+            return[...prevState].sort((a,b) => b.name > a.name ? 1 : -1);
+        });
     }
 
     return (
@@ -33,7 +48,7 @@ function Index() {
         </S.ul>
         <hr />
         <S.List>
-            {memberList.map(({ id, name, level }) => {
+            {list.map(({ id, name, level }) => {
                 return(
                     <ul key={id}>
                         <S.Desc>{id}</S.Desc>
@@ -41,7 +56,7 @@ function Index() {
                         <S.Desc>{level}</S.Desc>
                     </ul>
                 ) 
-            })};
+            })}
         </S.List>
 
 
@@ -54,4 +69,4 @@ function Index() {
     )
 }
 
-export default Index;
+export default List;
