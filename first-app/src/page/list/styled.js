@@ -6,17 +6,20 @@ export const title = styled.h2`
 `
 export const ul = styled.ul`
     display: flex;
-    width: 200px;
+    width: 300px;
     > li{
         font-size: 25px;
-        margin: 15px 0px;
+        margin: 20px 0px;
     }
 `
-export const list = styled.div`
-    width: 200px;
+export const List = styled.div`
     font-size: 20px;
-    display: flex;
-    >p{
-        margin: 10px 0px;
+    >ul{
+        display: flex;
+        justify-content: center;
     }
+`
+export const Desc = styled.li`
+    margin: 5px 0px;
+    width: 100px;
 `
