@@ -1,4 +1,4 @@
-export const data = {
+const MEMBER_DATA = {
     "title": "React list 구현",
     "data": [
         {
@@ -93,4 +93,5 @@ export const data = {
         },
     ]
 }
-export default data;
+
+export const { data : memberList } = MEMBER_DATA;
